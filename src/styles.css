@@ -59,3 +59,8 @@ a {
   max-width: 100%;
   width: 70px;
 }
+
+.weather-temperature .active {
+  color: #212529;
+  cursor: default;
+}
