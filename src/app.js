@@ -136,4 +136,17 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-search("London");
+function searchByPosition(position) {
+  console.log(position);
+  let apiKey = "ea2t80odc177b67c34d9a9706dd272ff";
+  let lon = position.coords.longitude;
+  let lat = position.coords.latitude;
+
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function searchByLocation() {
+  navigator.geolocation.getCurrentPosition(searchByPosition);
+}
+searchByLocation();
